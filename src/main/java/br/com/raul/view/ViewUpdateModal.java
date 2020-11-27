@@ -7,6 +7,7 @@ package br.com.raul.view;
 
 import br.com.raul.control.Cliente;
 import br.com.raul.control.ClienteDAO;
+import br.com.raul.control.ControllerClienteHibernate;
 
 /**
  *
@@ -26,8 +27,10 @@ public class ViewUpdateModal extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        ClienteDAO clienteDAO = new ClienteDAO();
-        Cliente cliente = clienteDAO.find(cod);
+       // ClienteDAO clienteDAO = new ClienteDAO();
+        //Cliente cliente = clienteDAO.find(cod);
+        ControllerClienteHibernate cch = new ControllerClienteHibernate();
+        Cliente cliente = cch.readId(cod);
         txtCod.setText(Integer.toString(cod));
         txtNome.setText(cliente.getNome());
         jCTipoPessoa.setSelectedItem(cliente.getTipopessoa());
@@ -352,7 +355,7 @@ public class ViewUpdateModal extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        cliente.setCod(Integer.parseInt(txtCod.getText()));
+        cliente.setId(Integer.parseInt(txtCod.getText()));
         cliente.setNome(txtNome.getText());
         cliente.setTipopessoa(jCTipoPessoa.getSelectedItem().toString());
         System.out.println(txtCpfCnpj.getText());
@@ -368,7 +371,10 @@ public class ViewUpdateModal extends javax.swing.JDialog {
         cliente.setTelefone(txtTelefone.getText());
         cliente.setSituacao(jCSituacao.getSelectedItem().toString());
 
-        clienteDao.update(cliente);
+        ControllerClienteHibernate cch = new ControllerClienteHibernate();
+        cch.update(cliente);
+        
+        //clienteDao.update(cliente);
 
 //        txtNome.setText("");
 //        jCTipoPessoa.setSelectedIndex(0);

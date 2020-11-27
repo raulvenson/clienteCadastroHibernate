@@ -80,7 +80,7 @@ public class ClienteDAO {
 
             while (rs.next()) {
                 Cliente cliente = new Cliente();
-                cliente.setCod(rs.getInt("cod"));
+               // cliente.setCod(rs.getInt("cod"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setTipopessoa(rs.getString("tipopessoa"));
                 cliente.setCpfCnpj(rs.getString("cpfcnpj"));
@@ -121,7 +121,7 @@ public class ClienteDAO {
             rs = pstm.executeQuery();
 
             if (rs.next()) {
-                cliente.setCod(rs.getInt("cod"));
+//                cliente.setCod(rs.getInt("cod"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setTipopessoa(rs.getString("tipopessoa"));
                 cliente.setCpfCnpj(rs.getString("cpfcnpj"));
@@ -170,7 +170,7 @@ public class ClienteDAO {
             pstm.setString(11, cliente.getEmail());
             pstm.setString(12, cliente.getTelefone());
             pstm.setString(13, cliente.getSituacao());
-            pstm.setInt(14, cliente.getCod());
+//            pstm.setInt(14, cliente.getCod());
 
             pstm.executeUpdate();
 
@@ -193,7 +193,7 @@ public class ClienteDAO {
     }
 
     public void delete(Cliente cliente) {
-        String sql = "delete from cliente where cod = ?";
+        String sql = "delete from cliente where id = ?";
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -203,7 +203,7 @@ public class ClienteDAO {
 
             pstm = (PreparedStatement) conn.prepareStatement(sql);
 
-            pstm.setInt(1, cliente.getCod());
+//            pstm.setInt(1, cliente.getCod());
 
             pstm.executeUpdate();
 

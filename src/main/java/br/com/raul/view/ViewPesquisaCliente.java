@@ -7,6 +7,7 @@ package br.com.raul.view;
 
 import br.com.raul.control.Cliente;
 import br.com.raul.control.ClienteDAO;
+import br.com.raul.control.ControllerClienteHibernate;
 import br.com.raul.relatorio.Relatorio;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -45,7 +46,7 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
 
         for (Cliente c : cdao.read()) {
             dtmClientes.addRow(new Object[]{
-                c.getCod(),
+              //  c.getCod(),
                 c.getNome(),
                 c.getTipopessoa(),
                 c.getCpfCnpj(),
@@ -214,16 +215,49 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        readJTable();
+        ControllerClienteHibernate cch = new ControllerClienteHibernate();
+        
+        List<Cliente> lClientes = cch.read();
+        
+        DefaultTableModel dtmClientes = (DefaultTableModel) jTableClientes.getModel();
+        dtmClientes.setNumRows(0);
+        
+        for (Cliente c : lClientes) {
+             dtmClientes.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getTipopessoa(),
+                c.getCpfCnpj(),
+                c.getCep(),
+                c.getEndereco(),
+                c.getNumero(),
+                c.getComplemento(),
+                c.getBairro(),
+                c.getEstado(),
+                c.getCidade(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getSituacao(),});
+        }
+        
+        
+//Antiga leitura do banco para listar        
+//readJTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+        
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
         if (jTableClientes.getSelectedRow() != -1) {
 
-            cliente.setCod((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
-            clienteDAO.delete(cliente);
+            cliente.setId((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
+            
+            ControllerClienteHibernate cch = new ControllerClienteHibernate();
+            cch.delete(cliente);
+            
+//clienteDAO.delete(cliente);
 
             readJTable();
 
@@ -238,9 +272,9 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
 
         if (jTableClientes.getSelectedRow() != -1) {
 
-            cliente.setCod((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
+            cliente.setId((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
 
-            ViewUpdateModal viewUpdateModal = new ViewUpdateModal(null, true, cliente.getCod());
+            ViewUpdateModal viewUpdateModal = new ViewUpdateModal(null, true, cliente.getId());
 
             int x = 1;
 
