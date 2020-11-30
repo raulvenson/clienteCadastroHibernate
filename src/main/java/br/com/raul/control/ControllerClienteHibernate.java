@@ -54,10 +54,7 @@ public class ControllerClienteHibernate {
     //Buscar um cliente pelo ID
     public Cliente readId(int id){
         em.getTransaction().begin();
-        Query query = em.createNativeQuery("SELECT cliente FROM Cliente cliente WHERE id = " + id);
-         Cliente cliente = new Cliente();
-         //cliente.setNome(query.getParameter());
-          em.getTransaction().commit();
+        Cliente cliente = em.find(Cliente.class, id);
         emf.close();
         return cliente;
     }

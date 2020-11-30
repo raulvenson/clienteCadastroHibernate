@@ -94,6 +94,7 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setTitle("Pesquisar");
 
         jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
