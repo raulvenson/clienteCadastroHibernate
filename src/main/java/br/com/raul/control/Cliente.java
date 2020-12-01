@@ -5,11 +5,14 @@
  */
 package br.com.raul.control;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,7 +22,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+public class Cliente implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,8 +45,10 @@ public class Cliente {
     private String bairro;
     @Column
     private String estado;
-    @Column
-    private String cidade;
+    
+    @JoinColumn(name = "FK_CIDADE_ID", referencedColumnName = "ID_CIDADE")
+    @OneToMany
+    private Cidade cidade;
     @Column
     private String email;
     @Column
@@ -131,11 +136,11 @@ public class Cliente {
         this.estado = estado;
     }
 
-    public String getCidade() {
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
 
