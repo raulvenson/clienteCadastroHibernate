@@ -41,7 +41,7 @@ public class ViewUpdateModal extends javax.swing.JDialog {
         txtComplemento.setText(cliente.getComplemento());
         txtBairro.setText(cliente.getBairro());
         jCEstado.setSelectedItem(cliente.getEstado());
-        txtCidade.setText(cliente.getCidade());
+//        txtCidade.setText(cliente.getCidade());
         txtEmail.setText(cliente.getEmail());
         txtTelefone.setText(cliente.getTelefone());
         jCSituacao.setSelectedItem(cliente.getSituacao());
@@ -366,7 +366,7 @@ public class ViewUpdateModal extends javax.swing.JDialog {
         cliente.setComplemento(txtComplemento.getText());
         cliente.setBairro(txtBairro.getText());
         cliente.setEstado(jCEstado.getSelectedItem().toString());
-        cliente.setCidade(txtCidade.getText());
+//        cliente.setCidade(txtCidade.getText());
         cliente.setEmail(txtEmail.getText());
         cliente.setTelefone(txtTelefone.getText());
         cliente.setSituacao(jCSituacao.getSelectedItem().toString());

@@ -6,11 +6,14 @@
 package br.com.raul.control;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,6 +32,17 @@ public class Cidade implements Serializable {
     
     @Column(name = "NOME_CIDADE")
     private String nomeCidade;
+    
+    @OneToMany(mappedBy = "Cidade")
+    private List<Cliente> lCliente =  new LinkedList<>();
+
+    public List<Cliente> getlCliente() {
+        return lCliente;
+    }
+
+    public void setlCliente(List<Cliente> lCliente) {
+        this.lCliente = lCliente;
+    }
 
     public Long getIdCidade() {
         return idCidade;

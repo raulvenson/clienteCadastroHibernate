@@ -12,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -46,8 +46,9 @@ public class Cliente implements Serializable {
     @Column
     private String estado;
     
-    @JoinColumn(name = "FK_CIDADE_ID", referencedColumnName = "ID_CIDADE")
-    @OneToMany
+//    @Column(name = "Cidade")
+    @JoinColumn(name = "Cidade")
+    @ManyToOne
     private Cidade cidade;
     @Column
     private String email;

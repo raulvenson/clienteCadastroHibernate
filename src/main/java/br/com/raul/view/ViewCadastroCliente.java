@@ -5,6 +5,7 @@
  */
 package br.com.raul.view;
 
+import br.com.raul.control.Cidade;
 import br.com.raul.control.Cliente;
 import br.com.raul.control.ClienteDAO;
 import br.com.raul.control.ControllerClienteHibernate;
@@ -14,6 +15,7 @@ import br.com.raul.control.cpfcnpj.CNPJ;
 import br.com.raul.control.cpfcnpj.CPF;
 import br.com.raul.control.viacep.CEP;
 import br.com.raul.control.viacep.ViaCEP;
+import com.itextpdf.io.font.CidFont;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -416,6 +418,9 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
         if (txtNome.getText() == null || jCTipoPessoa.getSelectedIndex() == 0 || txtCpfCnpjs.getText() == null || txtCep.getText() == null || txtEndereco.getText() == null || txtNumero.getText() == null || txtTelefone.getText() == null) {
             JOptionPane.showMessageDialog(null, "Verifique se preencheu todos os campos obrigatórios!");
         } else {
+            
+            Cidade cidade = new Cidade();
+            
 
             cliente.setNome(txtNome.getText());
             cliente.setTipopessoa(jCTipoPessoa.getSelectedItem().toString());
@@ -427,7 +432,9 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
             cliente.setComplemento(txtComplemento.getText());
             cliente.setBairro(txtBairro.getText());
             cliente.setEstado(jCEstado.getSelectedItem().toString());
-            cliente.setCidade(txtCidade.getText());
+//            cliente.setCidade(txtCidade.getText());
+            cidade.setNomeCidade(txtCidade.getText());
+            cliente.setCidade(cidade);
             cliente.setEmail(txtEmail.getText());
 
             String telefone = txtTelefone.getText();

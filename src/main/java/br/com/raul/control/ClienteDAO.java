@@ -42,7 +42,7 @@ public class ClienteDAO {
             pstm.setString(7, cliente.getComplemento());
             pstm.setString(8, cliente.getBairro());
             pstm.setString(9, cliente.getEstado());
-            pstm.setString(10, cliente.getCidade());
+//            pstm.setString(10, cliente.getCidade());
             pstm.setString(11, cliente.getEmail());
             pstm.setString(12, cliente.getTelefone());
             pstm.setString(13, cliente.getSituacao());
@@ -90,7 +90,7 @@ public class ClienteDAO {
                 cliente.setComplemento(rs.getString("complemento"));
                 cliente.setBairro(rs.getString("bairro"));
                 cliente.setEstado(rs.getString("estado"));
-                cliente.setCidade(rs.getString("cidade"));
+//                cliente.setCidade(rs.getString("cidade"));
                 cliente.setEmail(rs.getString("email"));
                 cliente.setTelefone(rs.getString("telefone"));
                 cliente.setSituacao(rs.getString("situacao"));
@@ -131,7 +131,7 @@ public class ClienteDAO {
                 cliente.setComplemento(rs.getString("complemento"));
                 cliente.setBairro(rs.getString("bairro"));
                 cliente.setEstado(rs.getString("estado"));
-                cliente.setCidade(rs.getString("cidade"));
+//                cliente.setCidade(rs.getString("cidade"));
                 cliente.setEmail(rs.getString("email"));
                 cliente.setTelefone(rs.getString("telefone"));
                 cliente.setSituacao(rs.getString("situacao"));
@@ -166,7 +166,7 @@ public class ClienteDAO {
             pstm.setString(7, cliente.getComplemento());
             pstm.setString(8, cliente.getBairro());
             pstm.setString(9, cliente.getEstado());
-            pstm.setString(10, cliente.getCidade());
+//            pstm.setString(10, cliente.getCidade());
             pstm.setString(11, cliente.getEmail());
             pstm.setString(12, cliente.getTelefone());
             pstm.setString(13, cliente.getSituacao());
